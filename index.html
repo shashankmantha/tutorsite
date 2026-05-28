@@ -284,9 +284,14 @@
       box-shadow: var(--shadow-soft);
     }
 
-    .subject-card {
+    .subject-card,
+    .session-card {
       padding: 36px;
       min-height: 360px;
+    }
+
+    .session-card {
+      min-height: 300px;
     }
 
     .card-title {
@@ -376,6 +381,14 @@
       color: var(--muted);
       font-size: 1.08rem;
       margin-bottom: 28px;
+    }
+
+    .email-link {
+      color: var(--text);
+      font-weight: 750;
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
     }
 
     .contact-actions {
@@ -518,6 +531,7 @@
       }
 
       .subject-card,
+      .session-card,
       .experience-card {
         padding: 24px;
       }
@@ -562,10 +576,6 @@
             TypeScript, SQL, and data structures.
           </p>
 
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="mailto:shashankmantha0@gmail.com">Contact Me</a>
-            <a class="btn btn-secondary" href="#subjects">View Subjects</a>
-          </div>
 
           <div class="trust-line" aria-label="Tutoring highlights">
             <span>Algebra Tutor</span>
@@ -606,6 +616,67 @@
               <div>}</div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="contact-card">
+          <h2 id="contact-title">Need help with math or coding?</h2>
+          <p>All tutoring questions, scheduling, and availability requests can be sent to <a class="email-link" href="mailto:smantha.tutor@gmail.com">smantha.tutor@gmail.com</a>.</p>
+
+          <div class="contact-actions">
+            <a class="btn btn-secondary btn-icon" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+            <a class="btn btn-secondary btn-icon" href="https://github.com/" target="_blank" rel="noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5a10.5 10.5 0 0 0-6 0C8 2 7 2 7 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 6 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.3-.8 2.1-.7.3-2.5.8-3.6-1.1 0 0-.7-1.2-2-1.3 0 0-1.3 0-.1.8 0 0 .9.4 1.5 2 0 0 .8 2.5 4.1 1.7V22"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="session-types" aria-labelledby="session-types-title">
+      <div class="container">
+        <div class="section-heading">
+          <h2 id="session-types-title">Session Types</h2>
+          <p>Flexible tutoring options for local and remote students.</p>
+        </div>
+
+        <div class="cards-2">
+          <article class="card session-card">
+            <div class="card-title">
+              <div class="icon-box" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-1.5Z"/><path d="M8 7h6"/><path d="M8 11h8"/></svg>
+              </div>
+              <h3>In Person</h3>
+            </div>
+
+            <ul class="check-list">
+              <li><span class="check"></span><span>In-person sessions are preferred at a local library.</span></li>
+              <li><span class="check"></span><span>Library sessions provide a quiet, focused, and public learning environment.</span></li>
+              <li><span class="check"></span><span>Best for students who benefit from working through problems side by side.</span></li>
+            </ul>
+          </article>
+
+          <article class="card session-card">
+            <div class="card-title">
+              <div class="icon-box" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m8 21 4-4 4 4"/><path d="M12 17v4"/><path d="M8 10h.01"/><path d="M12 10h.01"/><path d="M16 10h.01"/></svg>
+              </div>
+              <h3>Virtual</h3>
+            </div>
+
+            <ul class="check-list">
+              <li><span class="check"></span><span>Virtual sessions are conducted over Zoom.</span></li>
+              <li><span class="check"></span><span>A stylus, tablet, or digital pen setup is preferred for writing through math and coding notes.</span></li>
+              <li><span class="check"></span><span>Best for remote students or students who prefer meeting from home.</span></li>
+            </ul>
+          </article>
         </div>
       </div>
     </section>
@@ -664,30 +735,6 @@
               <li><span class="check"></span><span>Foundational skill review and test prep</span></li>
             </ul>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section contact-section" id="contact" aria-labelledby="contact-title">
-      <div class="container">
-        <div class="contact-card">
-          <h2 id="contact-title">Need help with math or coding?</h2>
-          <p>Reach out to schedule a tutoring session or ask about availability.</p>
-
-          <div class="contact-actions">
-            <a class="btn btn-primary btn-icon" href="mailto:shashankmantha0@gmail.com">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-              Email Me
-            </a>
-            <a class="btn btn-secondary btn-icon" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-              LinkedIn
-            </a>
-            <a class="btn btn-secondary btn-icon" href="https://github.com/" target="_blank" rel="noreferrer">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5a10.5 10.5 0 0 0-6 0C8 2 7 2 7 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 6 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.3-.8 2.1-.7.3-2.5.8-3.6-1.1 0 0-.7-1.2-2-1.3 0 0-1.3 0-.1.8 0 0 .9.4 1.5 2 0 0 .8 2.5 4.1 1.7V22"/></svg>
-              GitHub
-            </a>
-          </div>
         </div>
       </div>
     </section>
@@ -780,5 +827,3 @@
   </footer>
 </body>
 </html>
-
-
