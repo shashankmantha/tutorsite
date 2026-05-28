@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Math and computer science tutoring by Shashank Mantha for high school and college students." />
+  <title>Shashank Mantha | Math & Computer Science Tutor</title>
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-soft: #f7f7fa;
+      --text: #0d0d12;
+      --muted: #6f7284;
+      --muted-dark: #54586a;
+      --card: #ffffff;
+      --border: #e3e4ea;
+      --accent: #070719;
+      --accent-soft: #ededf2;
+      --shadow: 0 16px 45px rgba(12, 12, 20, 0.08);
+      --shadow-soft: 0 2px 8px rgba(12, 12, 20, 0.06);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 10px;
+      --container: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(100% - 40px, var(--container));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 88px 0;
+    }
+
+    .section-soft {
+      background: var(--bg-soft);
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 44px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      line-height: 1.15;
+      letter-spacing: -0.04em;
+      margin-bottom: 12px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 44px;
+      padding: 0 22px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      font-weight: 650;
+      font-size: 0.95rem;
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background 180ms ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--text);
+    }
+
+    .btn-icon svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .hero {
+      min-height: 680px;
+      display: flex;
+      align-items: center;
+      padding: 72px 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      align-items: center;
+      gap: 72px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--muted-dark);
+      font-size: 0.85rem;
+      font-weight: 650;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 7vw, 5.35rem);
+      line-height: 0.97;
+      letter-spacing: -0.07em;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 span {
+      display: block;
+    }
+
+    .hero h2 {
+      color: var(--muted);
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      line-height: 1.2;
+      letter-spacing: -0.035em;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      max-width: 590px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .trust-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--muted);
+      opacity: 0.55;
+    }
+
+    .hero-art {
+      position: relative;
+      min-height: 360px;
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255,255,255,0.92), transparent 30%),
+        linear-gradient(135deg, #f1edf0 0%, #f7f1ea 44%, #eee7de 100%);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,0.75);
+    }
+
+    .whiteboard {
+      position: absolute;
+      inset: 0;
+      padding: 38px;
+      color: rgba(7, 7, 25, 0.7);
+    }
+
+    .formula {
+      position: absolute;
+      font-family: "Times New Roman", serif;
+      color: rgba(7, 7, 25, 0.58);
+      font-weight: 700;
+      transform: rotate(-4deg);
+    }
+
+    .formula.one { top: 38px; left: 38px; font-size: 2.2rem; }
+    .formula.two { top: 132px; left: 80px; font-size: 1.4rem; transform: rotate(3deg); }
+    .formula.three { bottom: 54px; right: 42px; font-size: 1.65rem; transform: rotate(2deg); }
+    .formula.four { bottom: 118px; left: 42px; font-size: 1.15rem; transform: rotate(-2deg); }
+
+    .circuit {
+      position: absolute;
+      top: 44px;
+      right: 42px;
+      width: 210px;
+      height: 160px;
+      opacity: 0.72;
+    }
+
+    .code-block {
+      position: absolute;
+      right: 44px;
+      bottom: 44px;
+      width: min(310px, 52%);
+      padding: 20px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 14px 32px rgba(20, 20, 30, 0.1);
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 0.82rem;
+      color: #343746;
+      line-height: 1.75;
+    }
+
+    .tag {
+      position: absolute;
+      z-index: 2;
+      padding: 11px 15px;
+      border-radius: 9px;
+      background: var(--accent);
+      color: white;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 14px 30px rgba(7, 7, 25, 0.18);
+    }
+
+    .tag.python { top: 90px; left: -22px; }
+    .tag.algebra { top: -16px; right: -14px; }
+    .tag.calculus { right: -20px; bottom: 88px; }
+    .tag.data { left: 28%; bottom: -16px; }
+
+    .cards-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .subject-card {
+      padding: 36px;
+      min-height: 360px;
+    }
+
+    .card-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .icon-box {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: #e8e9ee;
+      color: var(--accent);
+      flex: none;
+    }
+
+    .icon-box svg {
+      width: 23px;
+      height: 23px;
+    }
+
+    .card-title h3 {
+      font-size: 1.55rem;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    .check-list {
+      list-style: none;
+      display: grid;
+      gap: 13px;
+    }
+
+    .check-list li {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      gap: 12px;
+      align-items: start;
+      color: var(--muted-dark);
+      font-size: 0.98rem;
+    }
+
+    .check {
+      width: 18px;
+      height: 18px;
+      margin-top: 3px;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      flex: none;
+    }
+
+    .check::after {
+      content: "";
+      width: 5px;
+      height: 8px;
+      border-right: 2px solid var(--accent);
+      border-bottom: 2px solid var(--accent);
+      transform: rotate(45deg) translate(-1px, -1px);
+    }
+
+    .contact-section {
+      background: var(--bg-soft);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .contact-card {
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .contact-card h2 {
+      font-size: clamp(2.2rem, 4.5vw, 3rem);
+      line-height: 1.12;
+      letter-spacing: -0.05em;
+      margin-bottom: 12px;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin-bottom: 28px;
+    }
+
+    .contact-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .why-card {
+      min-height: 260px;
+      padding: 34px 28px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .why-card .icon-box {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      margin-bottom: 22px;
+    }
+
+    .why-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 22px;
+      letter-spacing: -0.02em;
+    }
+
+    .why-card p {
+      color: var(--muted);
+      max-width: 275px;
+    }
+
+    .experience-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      display: grid;
+      gap: 26px;
+    }
+
+    .experience-card {
+      padding: 32px;
+    }
+
+    .experience-head {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 16px;
+      margin-bottom: 28px;
+      align-items: start;
+    }
+
+    .experience-head h3 {
+      font-size: 1.35rem;
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+      margin-bottom: 4px;
+    }
+
+    .experience-head p {
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 32px 0;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        min-height: auto;
+        padding: 64px 0 76px;
+      }
+
+      .hero-grid,
+      .cards-2,
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid {
+        gap: 48px;
+      }
+
+      .hero-art {
+        min-height: 330px;
+      }
+
+      .why-grid {
+        max-width: 560px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 28px, var(--container));
+      }
+
+      .section {
+        padding: 64px 0;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.8rem, 17vw, 4rem);
+      }
+
+      .hero h2 {
+        font-size: 1.45rem;
+      }
+
+      .hero p,
+      .contact-card p,
+      .section-heading p {
+        font-size: 1rem;
+      }
+
+      .hero-actions,
+      .contact-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .subject-card,
+      .experience-card {
+        padding: 24px;
+      }
+
+      .card-title h3 {
+        font-size: 1.32rem;
+      }
+
+      .hero-art {
+        min-height: 300px;
+      }
+
+      .tag {
+        font-size: 0.78rem;
+        padding: 9px 12px;
+      }
+
+      .tag.python { left: 12px; top: 18px; }
+      .tag.algebra { right: 12px; top: 18px; }
+      .tag.calculus { right: 12px; bottom: 22px; }
+      .tag.data { left: 12px; bottom: 22px; }
+
+      .formula.one { font-size: 1.65rem; left: 26px; top: 72px; }
+      .formula.two { font-size: 1.05rem; left: 36px; top: 138px; }
+      .formula.four { display: none; }
+      .circuit { width: 160px; right: 18px; top: 78px; }
+      .code-block { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Math Tutor • CS Student • Cybersecurity Minor</div>
+          <h1 id="hero-title">Hi, I'm <span>Shashank.</span></h1>
+          <h2>Math &amp; Computer Science Tutor</h2>
+          <p>
+            I help students build confidence in math and coding by breaking difficult concepts into clear,
+            manageable steps. I tutor subjects ranging from Algebra and Calculus to Python, Java,
+            TypeScript, SQL, and data structures.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:shashankmantha0@gmail.com">Contact Me</a>
+            <a class="btn btn-secondary" href="#subjects">View Subjects</a>
+          </div>
+
+          <div class="trust-line" aria-label="Tutoring highlights">
+            <span>Algebra Tutor</span>
+            <span class="dot"></span>
+            <span>CS Student</span>
+            <span class="dot"></span>
+            <span>Cybersecurity Minor</span>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-label="Illustration with math and coding concepts">
+          <span class="tag python">Python</span>
+          <span class="tag algebra">Algebra</span>
+          <span class="tag calculus">Calculus</span>
+          <span class="tag data">Data Structures</span>
+
+          <div class="whiteboard">
+            <div class="formula one">∫ f(x) dx</div>
+            <div class="formula two">O(n log n)</div>
+            <div class="formula three">A = P(1 + r/n)<sup>nt</sup></div>
+            <div class="formula four">if x &gt; 0: solve()</div>
+
+            <svg class="circuit" viewBox="0 0 240 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 34H60V70H104V34H154" stroke="#24243d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M154 34H198" stroke="#24243d" stroke-width="4" stroke-linecap="round"/>
+              <path d="M198 20V48" stroke="#24243d" stroke-width="4" stroke-linecap="round"/>
+              <path d="M12 122H66V92H112V122H160V92H216" stroke="#24243d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="60" cy="70" r="7" fill="#24243d"/>
+              <circle cx="104" cy="34" r="7" fill="#24243d"/>
+              <circle cx="160" cy="122" r="7" fill="#24243d"/>
+              <circle cx="216" cy="92" r="7" fill="#24243d"/>
+            </svg>
+
+            <div class="code-block" aria-hidden="true">
+              <div>function explain(topic) {</div>
+              <div>&nbsp;&nbsp;breakIntoSteps(topic);</div>
+              <div>&nbsp;&nbsp;practiceUntilClear();</div>
+              <div>}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="subjects" aria-labelledby="subjects-title">
+      <div class="container">
+        <div class="section-heading">
+          <h2 id="subjects-title">Concepts I Teach</h2>
+          <p>Support across mathematics, programming, and computer science fundamentals.</p>
+        </div>
+
+        <div class="cards-2">
+          <article class="card subject-card">
+            <div class="card-title">
+              <div class="icon-box" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m8 16-4-4 4-4"/>
+                  <path d="m16 8 4 4-4 4"/>
+                </svg>
+              </div>
+              <h3>Computer Science</h3>
+            </div>
+
+            <ul class="check-list">
+              <li><span class="check"></span><span>Python, Java, TypeScript, Kotlin, C, and SQL</span></li>
+              <li><span class="check"></span><span>Programming fundamentals</span></li>
+              <li><span class="check"></span><span>Object-oriented programming</span></li>
+              <li><span class="check"></span><span>Recursion and problem solving</span></li>
+              <li><span class="check"></span><span>Arrays, linked lists, stacks, queues, and trees</span></li>
+              <li><span class="check"></span><span>Data structures and algorithms</span></li>
+              <li><span class="check"></span><span>Web development fundamentals</span></li>
+            </ul>
+          </article>
+
+          <article class="card subject-card">
+            <div class="card-title">
+              <div class="icon-box" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="5" y="3" width="14" height="18" rx="2"/>
+                  <path d="M8 7h8"/>
+                  <path d="M8 11h2"/><path d="M12 11h2"/><path d="M16 11h.01"/>
+                  <path d="M8 15h2"/><path d="M12 15h2"/><path d="M16 15h.01"/>
+                </svg>
+              </div>
+              <h3>Mathematics</h3>
+            </div>
+
+            <ul class="check-list">
+              <li><span class="check"></span><span>Algebra 1 and Algebra 2</span></li>
+              <li><span class="check"></span><span>Geometry</span></li>
+              <li><span class="check"></span><span>Pre-Calculus</span></li>
+              <li><span class="check"></span><span>Calculus I</span></li>
+              <li><span class="check"></span><span>Linear Algebra</span></li>
+              <li><span class="check"></span><span>Statistics</span></li>
+              <li><span class="check"></span><span>Discrete Mathematics</span></li>
+              <li><span class="check"></span><span>Foundational skill review and test prep</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="contact-card">
+          <h2 id="contact-title">Need help with math or coding?</h2>
+          <p>Reach out to schedule a tutoring session or ask about availability.</p>
+
+          <div class="contact-actions">
+            <a class="btn btn-primary btn-icon" href="mailto:shashankmantha0@gmail.com">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+              Email Me
+            </a>
+            <a class="btn btn-secondary btn-icon" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+            <a class="btn btn-secondary btn-icon" href="https://github.com/" target="_blank" rel="noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5a10.5 10.5 0 0 0-6 0C8 2 7 2 7 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 6 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.3-.8 2.1-.7.3-2.5.8-3.6-1.1 0 0-.7-1.2-2-1.3 0 0-1.3 0-.1.8 0 0 .9.4 1.5 2 0 0 .8 2.5 4.1 1.7V22"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="why-me" aria-labelledby="why-title">
+      <div class="container">
+        <div class="section-heading">
+          <h2 id="why-title">Why Work With Me</h2>
+        </div>
+
+        <div class="why-grid">
+          <article class="card why-card">
+            <div class="icon-box" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M2 10a10 10 0 1 1 20 0c0 3.4-1.7 5.1-3.4 6.7-.9.8-1.6 1.5-1.6 2.3H7c0-.8-.7-1.5-1.6-2.3C3.7 15.1 2 13.4 2 10Z"/></svg>
+            </div>
+            <h3>Clear Explanations</h3>
+            <p>I break difficult topics into smaller steps so students can understand the why behind each concept.</p>
+          </article>
+
+          <article class="card why-card">
+            <div class="icon-box" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+            </div>
+            <h3>Confidence First</h3>
+            <p>My tutoring style focuses on patience, encouragement, and helping students feel capable.</p>
+          </article>
+
+          <article class="card why-card">
+            <div class="icon-box" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+            </div>
+            <h3>Math + Coding Background</h3>
+            <p>I combine college-level math coursework with hands-on programming experience across multiple languages.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="experience" aria-labelledby="experience-title">
+      <div class="container">
+        <div class="section-heading">
+          <h2 id="experience-title">Teaching Experience</h2>
+        </div>
+
+        <div class="experience-wrap">
+          <article class="card experience-card">
+            <div class="experience-head">
+              <div class="icon-box" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 10-10-5-10 5 10 5 10-5Z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              </div>
+              <div>
+                <h3>Algebra Tutor</h3>
+                <p>Century Academy High School</p>
+              </div>
+            </div>
+
+            <ul class="check-list">
+              <li><span class="check"></span><span>Helped Algebra 1 students with problem sets, homework, test prep, and foundational review</span></li>
+              <li><span class="check"></span><span>Worked one-on-one and in small groups</span></li>
+              <li><span class="check"></span><span>Focused on clear explanations and confidence-building</span></li>
+            </ul>
+          </article>
+
+          <article class="card experience-card">
+            <div class="experience-head">
+              <div class="icon-box" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <div>
+                <h3>Volunteer Youth Jiu-Jitsu Instructor</h3>
+                <p>Elite MMA</p>
+              </div>
+            </div>
+
+            <ul class="check-list">
+              <li><span class="check"></span><span>Helped teach structured youth classes</span></li>
+              <li><span class="check"></span><span>Practiced patience, communication, and adapting explanations for different learning levels</span></li>
+              <li><span class="check"></span><span>Supported a safe, respectful, and motivating learning environment</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Shashank Mantha • Math &amp; Computer Science Tutoring
+    </div>
+  </footer>
+</body>
+</html>
+
+
